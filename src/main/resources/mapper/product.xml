@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cos.mybatisex01.repository.ProductRepository">
+  <!-- 함수이름이랑 똑같이 작성해야함. -->
+  <insert id="save">
+  	INSERT INTO product(name, code) VALUES(#{name}, #{code})
+  </insert>
+  
+  <!-- delete -->
+  <delete id="deleteById">
+  	DELETE FROM product WHERE id = #{id}
+  </delete>
+  
+  <update id = "update">
+  	UPDATE product SET name = #{name}, code = #{code} WHERE id = #{id}
+  </update>
+  
+  <!-- resultType이 없으면 리턴을 못 받음 select할 때는 필수 !! -->
+  <select id="findAll" resultType="com.cos.mybatisex01.model.Product">
+  	SELECT * FROM product
+  </select>
+  
+  <select id="findById" resultType="com.cos.mybatisex01.model.Product">
+  	SELECT * FROM product WHERE id = #{id}
+  </select>
+</mapper>
